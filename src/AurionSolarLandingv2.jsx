@@ -144,6 +144,8 @@ const FONTS_CSS = `
 
 .hg-mobile-toggle { display: none; }
 
+.hg-stretch { height: 100%; }
+
 @media (max-width: 860px) {
   .hg-desktop-nav { display: none !important; }
   .hg-hero-grid { grid-template-columns: 1fr !important; }
@@ -342,7 +344,7 @@ export default function AurionSolarLanding() {
         <div className="hg-float" style={{ position: "absolute", bottom: 140, left: "4%", opacity: 0.18, animationDelay: "1.2s" }}><Zap size={54} color="#fff" /></div>
         <div className="hg-float" style={{ position: "absolute", top: 220, left: "20%", opacity: 0.15, animationDelay: "2s" }}><Factory size={40} color="#fff" /></div>
 
-        <div className="hg-hero-grid" style={{ maxWidth: 1180, margin: "0 auto", padding: "20px 24px 100px", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 50, alignItems: "center", position: "relative", zIndex: 2 }}>
+        <div className="hg-hero-grid" style={{ maxWidth: 1180, margin: "0 auto", padding: "20px 24px 115px", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 50, alignItems: "center", position: "relative", zIndex: 2 }}>
           <div>
             <div className="hg-glass" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 16px", marginBottom: 24, color: "#fff", fontSize: 13, fontWeight: 500 }}>
               <ShieldCheck size={15} /> PEZA-registered, export-oriented enterprise
@@ -378,7 +380,7 @@ export default function AurionSolarLanding() {
             <p style={{ color: dark ? "#B7C4D0" : "#5B6B78" }}>We don't sell rooftop panels — we supply the cells that go inside them. Every batch is built to the tolerances module manufacturers actually specify.</p>
           </div>
         </Reveal>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 22 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 22, alignItems: "stretch" }}>
           {[
             [ShieldCheck, "N-Type Bifacial Technology", "Low-LID cell architecture with <3% cell-to-module loss, tuned for high-efficiency module lines."],
             [PackageCheck, "PEZA Export Registration", "Zero-tariff raw material imports and exports, with full compliance documentation per shipment."],
@@ -387,13 +389,13 @@ export default function AurionSolarLanding() {
             [FlaskConical, "Reliability Testing", "Anti-PID and attenuation testing on every production run before packaging and clearance."],
             [Factory, "Backed by GBFNEW POWER GROUP", "Established through direct investment from GBFNEW POWER GROUP INC., sharing group manufacturing standards."],
           ].map(([Icon, title, desc], i) => (
-            <Reveal key={title} delay={i * 80}>
-              <div className="hg-card">
-                <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(74,144,226,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
+            <Reveal key={title} delay={i * 80} className="hg-stretch">
+              <div className="hg-card" style={{ height: "100%", minHeight: 240, display: "flex", flexDirection: "column" }}>
+                <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(74,144,226,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18, flexShrink: 0 }}>
                   <Icon size={24} color="var(--blue-sky)" />
                 </div>
                 <h3 style={{ fontSize: 17, marginBottom: 8 }}>{title}</h3>
-                <p style={{ fontSize: 14.5, color: dark ? "#B7C4D0" : "#5B6B78" }}>{desc}</p>
+                <p style={{ fontSize: 14.5, color: dark ? "#B7C4D0" : "#5B6B78", flexGrow: 1 }}>{desc}</p>
               </div>
             </Reveal>
           ))}
@@ -606,7 +608,8 @@ export default function AurionSolarLanding() {
       </section>
 
       {/* ---------------- FAQ ---------------- */}
-      <section id="faq" style={{ padding: "100px 24px", maxWidth: 800, margin: "0 auto" }}>
+      <section id="faq" style={{ padding: "100px 24px", background: dark ? "#131C25" : "#fff" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 46 }}>
             <h2 style={{ fontSize: 30, marginBottom: 14 }}>Sourcing FAQ</h2>
@@ -626,6 +629,7 @@ export default function AurionSolarLanding() {
             </div>
           </Reveal>
         ))}
+        </div>
       </section>
 
       {/* ---------------- CTA BANNER ---------------- */}
