@@ -289,13 +289,15 @@ export default function AurionSolarLanding() {
       {/* ---------------- NAVBAR ---------------- */}
       <header style={{ position: "sticky", top: 0, zIndex: 50, background: dark ? "rgba(22,32,43,0.85)" : "rgba(255,255,255,0.85)", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(15,76,129,0.08)" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 38, height: 38, borderRadius: 10, background: "linear-gradient(135deg, var(--blue-deep), var(--blue-sky))", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Factory size={19} color="#fff" />
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15 }}>
-              <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 18, color: "var(--blue-deep)" }}>Aurion Solar PH</span>
-              <span style={{ fontSize: 10.5, fontWeight: 500, letterSpacing: 0.4, color: dark ? "#8FA3B5" : "#5B6B78", textTransform: "uppercase" }}>Philippine Manufacturing Division</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <img
+              src={`${import.meta.env.BASE_URL}images/aurion-logo.png`}
+              alt="Aurion Solar"
+              style={{ height: 40, width: "auto", display: "block", objectFit: "contain" }}
+            />
+            <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15, paddingLeft: 12, borderLeft: dark ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(15,76,129,0.15)" }}>
+              <span style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: 0.4, color: dark ? "#8FA3B5" : "#5B6B78", textTransform: "uppercase" }}>Philippine</span>
+              <span style={{ fontSize: 10.5, fontWeight: 600, letterSpacing: 0.4, color: dark ? "#8FA3B5" : "#5B6B78", textTransform: "uppercase" }}>Manufacturing Division</span>
             </div>
           </div>
 
@@ -692,14 +694,15 @@ export default function AurionSolarLanding() {
       <footer style={{ background: "var(--gray-dark)", color: "#D6DEE5", padding: "70px 24px 30px" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1.2fr", gap: 40 }}>
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-              <div style={{ width: 34, height: 34, borderRadius: 9, background: "linear-gradient(135deg, var(--blue-sky), var(--green))", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Factory size={17} color="#fff" />
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
+              <div style={{ background: "#fff", borderRadius: 10, padding: "6px 10px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img
+                  src={`${import.meta.env.BASE_URL}images/aurion-logo.png`}
+                  alt="Aurion Solar"
+                  style={{ height: 26, width: "auto", display: "block", objectFit: "contain" }}
+                />
               </div>
-              <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15 }}>
-                <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#fff" }}>Aurion Solar PH</span>
-                <span style={{ fontSize: 10, color: "#9FADB8" }}>Philippine Manufacturing Division</span>
-              </div>
+              <span style={{ fontSize: 10, color: "#9FADB8", maxWidth: 100, lineHeight: 1.3 }}>Philippine Manufacturing Division</span>
             </div>
             <p style={{ fontSize: 13.5, color: "#9FADB8", maxWidth: 260 }}>A PEZA-registered manufacturer and supplier of N-Type bifacial solar cells, based in Santo Tomas, Batangas.</p>
             <div style={{ display: "flex", gap: 12, marginTop: 18 }}>
