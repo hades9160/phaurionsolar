@@ -291,7 +291,7 @@ export default function AurionSolarLanding() {
             </div>
           </div>
 
-          <nav className="hg-desktop-nav" style={{ display: "flex", gap: 30 }}>
+<nav className="hg-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 30, marginLeft: "auto", marginRight: 24 }}>
             {navItems.map((n) => (
               <a key={n.id} className="hg-navlink" onClick={() => scrollTo(n.id)} style={{ cursor: "pointer" }}>{n.label}</a>
             ))}
