@@ -349,7 +349,7 @@ export default function AurionSolarLanding() {
             </p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
               <button className="hg-btn-primary" onClick={() => scrollTo("contact")}>Request a Quote <ArrowRight size={16} /></button>
-              <button className="hg-btn-secondary" onClick={() => scrollTo("services")}>View Cell Datasheets</button>
+              {/* <button className="hg-btn-secondary" onClick={() => scrollTo("services")}>View Cell Datasheets</button> */}
             </div>
 
           </div>
