@@ -150,6 +150,19 @@ const FONTS_CSS = `
   #contact { grid-template-columns: 1fr !important; }
   footer > div:first-child { grid-template-columns: 1fr 1fr !important; }
 }
+
+@media (max-width: 900px) {
+  .hg-bento-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .hg-product-row { grid-template-columns: 1fr !important; }
+  .hg-product-row .hg-product-media { min-height: 220px !important; order: -1; }
+}
+
+@media (max-width: 600px) {
+  .hg-bento-grid { grid-template-columns: 1fr !important; }
+  .hg-about-stats { grid-template-columns: 1fr 1fr !important; }
+  .hg-about-closing { grid-template-columns: 1fr !important; }
+  .hg-about-closing > div { justify-content: flex-start !important; }
+}
 `;
 
 /* ---------- small utility hook for scroll-reveal ---------- */
@@ -169,10 +182,10 @@ function useReveal() {
   return [ref, inView];
 }
 
-function Reveal({ children, delay = 0, className = "" }) {
+function Reveal({ children, delay = 0, className = "", style = {} }) {
   const [ref, inView] = useReveal();
   return (
-    <div ref={ref} className={`hg-reveal ${inView ? "hg-in" : ""} ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+    <div ref={ref} className={`hg-reveal ${inView ? "hg-in" : ""} ${className}`} style={{ transitionDelay: `${delay}ms`, ...style }}>
       {children}
     </div>
   );
@@ -354,13 +367,34 @@ export default function AurionSolarLanding() {
 
           </div>
 
-          {/* <div className="hg-hero-arc hg-glass" style={{ padding: "26px 22px 10px" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
-              <span style={{ color: "#fff", fontSize: 13, fontWeight: 600 }}>Production output trend</span>
-              <span className="hg-pulse-dot" style={{ width: 8, height: 8, borderRadius: "50%", background: "#3CB371", display: "inline-block" }} />
+          <Reveal delay={160} className="hg-hero-arc">
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridAutoRows: "minmax(126px, auto)", gap: 14 }}>
+              <div className="hg-glass" style={{ background: "rgba(60,179,113,0.22)", border: "1px solid rgba(60,179,113,0.4)", padding: "20px 20px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <span style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: 0.4, color: "#fff", textTransform: "uppercase", opacity: 0.85 }}>Cell-to-Module Loss</span>
+                <span style={{ fontSize: 30, fontWeight: 700, color: "#fff", fontFamily: "var(--font-display)" }}><Counter target={3} prefix="<" suffix="%" /></span>
+              </div>
+              <div className="hg-glass" style={{ padding: "20px 20px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <span style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: 0.4, color: "#fff", textTransform: "uppercase", opacity: 0.85 }}>Export Markets Served</span>
+                <span style={{ fontSize: 30, fontWeight: 700, color: "#fff", fontFamily: "var(--font-display)" }}><Counter target={13} /></span>
+              </div>
+              <div className="hg-glass" style={{ background: "rgba(15,76,129,0.55)", border: "1px solid rgba(74,144,226,0.4)", padding: "22px 20px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <span style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: 0.4, color: "#fff", textTransform: "uppercase", opacity: 0.85 }}>On-Time Shipment Rate</span>
+                <span style={{ fontSize: 34, fontWeight: 700, color: "#fff", fontFamily: "var(--font-display)" }}><Counter target={99.5} suffix="%" /></span>
+              </div>
+              <div style={{ borderRadius: 18, overflow: "hidden", position: "relative", minHeight: 126 }}>
+                <img
+                  src={`${import.meta.env.BASE_URL}images/about-aurion.png`}
+                  alt="Aurion Solar cell fabrication line"
+                  style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }}
+                  loading="lazy"
+                />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(15,76,129,0) 40%, rgba(15,76,129,0.65) 100%)" }} />
+                <div style={{ position: "absolute", bottom: 12, left: 14, right: 14, color: "#fff", fontSize: 11.5, fontWeight: 600, letterSpacing: 0.3 }}>
+                  Santo Tomas, Batangas facility
+                </div>
+              </div>
             </div>
-            <DayArc />
-          </div> */}
+          </Reveal>
         </div>
       </section>
 
@@ -372,23 +406,39 @@ export default function AurionSolarLanding() {
             <p style={{ color: "#5B6B78" }}>We don't sell rooftop panels — we supply the cells that go inside them. Every batch is built to the tolerances module manufacturers actually specify.</p>
           </div>
         </Reveal>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 22, alignItems: "stretch" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22, alignItems: "stretch" }} className="hg-bento-grid">
           {[
-            [ShieldCheck, "N-Type Bifacial Technology", "Low-LID cell architecture with <3% cell-to-module loss, tuned for high-efficiency module lines."],
-            [PackageCheck, "PEZA Export Registration", "Zero-tariff raw material imports and exports, with full compliance documentation per shipment."],
-            [Boxes, "Strategic Sourcing Location", "Close to upstream polysilicon, silver paste, and glass supply out of China, South Korea, and Japan."],
-            [Globe2, "Compliant-Export Manufacturing", "Not currently subject to US AD/CVD photovoltaic investigations — a cleaner export path than several neighbors."],
-            [FlaskConical, "Reliability Testing", "Anti-PID and attenuation testing on every production run before packaging and clearance."],
-            [Factory, "Backed by GBFNEW POWER GROUP", "Established through direct investment from GBFNEW POWER GROUP INC., sharing group manufacturing standards."],
-          ].map(([Icon, title, desc], i) => (
-            <Reveal key={title} delay={i * 80} className="hg-stretch">
-              <div className="hg-card" style={{ height: "100%", minHeight: 240, display: "flex", flexDirection: "column" }}>
-                <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(74,144,226,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18, flexShrink: 0 }}>
-                  <Icon size={24} color="var(--blue-sky)" />
+            [ShieldCheck, "N-Type Bifacial Technology", "Low-LID cell architecture with <3% cell-to-module loss, tuned for high-efficiency module lines.", true],
+            [PackageCheck, "PEZA Export Registration", "Zero-tariff raw material imports and exports, with full compliance documentation per shipment.", false],
+            [Boxes, "Strategic Sourcing Location", "Close to upstream polysilicon, silver paste, and glass supply out of China, South Korea, and Japan.", false],
+            [Globe2, "Compliant-Export Manufacturing", "Not currently subject to US AD/CVD photovoltaic investigations — a cleaner export path than several neighbors.", false],
+            [FlaskConical, "Reliability Testing", "Anti-PID and attenuation testing on every production run before packaging and clearance.", false],
+            [Factory, "Backed by GBFNEW POWER GROUP", "Established through direct investment from GBFNEW POWER GROUP INC., sharing group manufacturing standards.", false],
+          ].map(([Icon, title, desc, featured], i) => (
+            <Reveal key={title} delay={i * 80} className="hg-stretch" style={{ gridColumn: featured ? "span 2" : "span 1" }}>
+              {featured ? (
+                <div style={{
+                  height: "100%", minHeight: 240, display: "flex", flexDirection: "column", justifyContent: "flex-end",
+                  borderRadius: 18, padding: "28px 30px", position: "relative", overflow: "hidden",
+                  background: "linear-gradient(135deg, var(--blue-deep), #124a7d)",
+                  boxShadow: "0 16px 36px rgba(15,76,129,0.24)",
+                }}>
+                  <span style={{ position: "absolute", top: 24, right: 26, fontSize: 11.5, fontWeight: 600, letterSpacing: 0.5, color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>Flagship platform</span>
+                  <div style={{ width: 58, height: 58, borderRadius: 16, background: "rgba(255,255,255,0.14)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+                    <Icon size={26} color="#fff" />
+                  </div>
+                  <h3 style={{ color: "#fff", fontSize: 20, marginBottom: 10, maxWidth: 360 }}>{title}</h3>
+                  <p style={{ fontSize: 15, color: "rgba(255,255,255,0.78)", maxWidth: 400 }}>{desc}</p>
                 </div>
-                <h3 style={{ fontSize: 17, marginBottom: 8 }}>{title}</h3>
-                <p style={{ fontSize: 14.5, color: "#5B6B78", flexGrow: 1 }}>{desc}</p>
-              </div>
+              ) : (
+                <div className="hg-card" style={{ height: "100%", minHeight: 240, display: "flex", flexDirection: "column" }}>
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(74,144,226,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18, flexShrink: 0 }}>
+                    <Icon size={24} color="var(--blue-sky)" />
+                  </div>
+                  <h3 style={{ fontSize: 17, marginBottom: 8 }}>{title}</h3>
+                  <p style={{ fontSize: 14.5, color: "#5B6B78", flexGrow: 1 }}>{desc}</p>
+                </div>
+              )}
             </Reveal>
           ))}
         </div>
@@ -403,25 +453,81 @@ export default function AurionSolarLanding() {
               <p style={{ color: "#5B6B78" }}>Two platforms, one export-grade standard — plus the testing, clearance, and logistics that get every batch to your line.</p>
             </div>
           </Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 22 }}>
+          {/* Featured platforms — staggered, alternating rows */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 22, marginBottom: 44 }}>
             {[
-              [Factory, "N-Type-183-16BB-Bifacial", "Our 16BB bifacial platform built for high-efficiency module lines, with <3% cell-to-module loss."],
-              [Layers, "N-Type-210R-16BB-Bifacial", "A large-format 210R bifacial platform for higher-output module designs."],
-              [Wrench, "Custom OEM Configuration", "Busbar count, wafer size, and packaging adjusted for qualified OEM orders."],
+              [Factory, "N-Type-183-16BB-Bifacial", "Our 16BB bifacial platform built for high-efficiency module lines, with <3% cell-to-module loss.", "linear-gradient(135deg, var(--blue-deep), #124a7d)", "rgba(15,76,129,0.55)"],
+              [Layers, "N-Type-210R-16BB-Bifacial", "A large-format 210R bifacial platform for higher-output module designs.", "linear-gradient(135deg, var(--green-dark), var(--green))", "rgba(46,139,87,0.5)"],
+              [Wrench, "Custom OEM Configuration", "Busbar count, wafer size, and packaging adjusted for qualified OEM orders.", "linear-gradient(135deg, #2F3A45, #435262)", "rgba(47,58,69,0.55)"],
+            ].map(([Icon, title, desc, panelBg, tint], i) => (
+              <Reveal key={title} delay={i * 80}>
+                <div
+                  className="hg-product-row"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: i % 2 === 0 ? "1.1fr 0.9fr" : "0.9fr 1.1fr",
+                    borderRadius: 22, overflow: "hidden", minHeight: 260,
+                    boxShadow: "0 12px 32px rgba(15,76,129,0.10)",
+                  }}
+                >
+                  <div style={{
+                    order: i % 2 === 0 ? 0 : 1,
+                    background: panelBg, padding: "40px 42px", display: "flex", flexDirection: "column", justifyContent: "center",
+                  }}>
+                    <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 0.6, color: "rgba(255,255,255,0.65)", marginBottom: 10 }}>0{i + 1}</span>
+                    <h3 style={{ color: "#fff", fontSize: 21, marginBottom: 12, maxWidth: 340 }}>{title}</h3>
+                    <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 14.5, maxWidth: 360, marginBottom: 22 }}>{desc}</p>
+                    <a
+                      onClick={() => scrollTo("contact")}
+                      style={{
+                        cursor: "pointer", width: 44, height: 44, borderRadius: "50%", border: "1.5px solid rgba(255,255,255,0.5)",
+                        display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", flexShrink: 0,
+                      }}
+                      aria-label="Request datasheet"
+                    >
+                      <ArrowUpRight size={18} />
+                    </a>
+                  </div>
+                  <div className="hg-product-media" style={{ order: i % 2 === 0 ? 1 : 0, position: "relative", minHeight: 220 }}>
+                    <img
+                      src={`${import.meta.env.BASE_URL}images/bg.jpg`}
+                      alt={title}
+                      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                      loading="lazy"
+                    />
+                    <div style={{ position: "absolute", inset: 0, background: tint }} />
+                    <div style={{ position: "absolute", bottom: 20, left: 20, right: 20, display: "flex", alignItems: "center", gap: 12 }}>
+                      <div style={{ width: 46, height: 46, borderRadius: 12, background: "rgba(255,255,255,0.16)", backdropFilter: "blur(6px)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <Icon size={22} color="#fff" />
+                      </div>
+                      <span style={{ color: "#fff", fontSize: 13.5, fontWeight: 600 }}>Request datasheet for full specs</span>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Supporting services — compact grid */}
+          <Reveal>
+            <h3 style={{ fontSize: 18, marginBottom: 20, color: "var(--blue-deep)" }}>End-to-end support with every shipment</h3>
+          </Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: 18 }}>
+            {[
               [FlaskConical, "Reliability & Attenuation Testing", "LID, CTM loss, and Anti-PID testing performed on every production batch."],
               [FileCheck2, "PEZA Export Clearance", "Zero-tariff customs clearance processed under PEZA export-enterprise status."],
               [Ship, "Global Shipping & Logistics", "Ocean freight routed to partner ports across Europe, North America, and beyond."],
               [ClipboardList, "Post-Shipment Technical Support", "Technical liaison for module-line integration questions after every shipment."],
             ].map(([Icon, title, desc], i) => (
               <Reveal key={title} delay={i * 60}>
-                <div className="hg-card" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-                  <div style={{ width: 50, height: 50, borderRadius: 12, background: "linear-gradient(135deg, var(--blue-deep), var(--blue-sky))", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
-                    <Icon size={22} color="#fff" />
+                <div className="hg-card" style={{ display: "flex", flexDirection: "column", height: "100%", padding: "24px 22px" }}>
+                  <div style={{ width: 42, height: 42, borderRadius: 11, background: "rgba(74,144,226,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+                    <Icon size={19} color="var(--blue-sky)" />
                   </div>
-                  <h3 style={{ fontSize: 16.5, marginBottom: 8 }}>{title}</h3>
-                  <p style={{ fontSize: 14, color: "#5B6B78", flexGrow: 1 }}>{desc}</p>
-                  <a className="hg-navlink" style={{ marginTop: 16, color: "var(--green)", fontSize: 13.5, display: "inline-flex", alignItems: "center", gap: 4, cursor: "pointer" }} onClick={() => scrollTo("contact")}>
-                    Request datasheet <ArrowUpRight size={14} />
+                  <h3 style={{ fontSize: 15, marginBottom: 6 }}>{title}</h3>
+                  <p style={{ fontSize: 13.5, color: "#5B6B78", flexGrow: 1 }}>{desc}</p>
+                  <a className="hg-navlink" style={{ marginTop: 14, color: "var(--green)", fontSize: 13, display: "inline-flex", alignItems: "center", gap: 4, cursor: "pointer" }} onClick={() => scrollTo("contact")}>
+                    Request datasheet <ArrowUpRight size={13} />
                   </a>
                 </div>
               </Reveal>
@@ -431,28 +537,56 @@ export default function AurionSolarLanding() {
       </section>
 
       {/* ---------------- ABOUT + STATS ---------------- */}
-      <section id="about" style={{ padding: "100px 24px", maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+      <section id="about" style={{ padding: "100px 24px", maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: 60, alignItems: "start" }}>
         <Reveal>
-          <div>
+          <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
             <span style={{ color: "var(--green)", fontWeight: 600, fontSize: 13.5, letterSpacing: 0.4 }}>ABOUT AURION SOLAR PH</span>
             <h2 style={{ fontSize: 30, margin: "10px 0 18px" }}>An export engine for the Aurion Solar group</h2>
-            <p style={{ color: "#5B6B78", marginBottom: 14 }}>
+            <p style={{ color: "#5B6B78", marginBottom: 30 }}>
               Philippine Aurion Solar Technologies Inc. was established through direct investment from GBFNEW POWER GROUP INC. as a PEZA-registered, export-oriented manufacturer of photovoltaic cells. Operating from the FPIP Industrial Park in Santo Tomas, Batangas, the facility converts the Philippines' trade, logistics, and policy advantages into a reliable supply line for module manufacturers overseas.
             </p>
-            <p style={{ color: "#5B6B78", marginBottom: 26 }}>
-              Our mandate is twofold: deliver stable, export-grade solar cells to Europe and the United States, and contribute to the Philippines' own industrial and export development in the process.
-            </p>
 
+            <div className="hg-about-stats" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 30 }}>
+              <div style={{ background: "var(--white)", border: "1px solid rgba(15,76,129,0.08)", borderRadius: 16, padding: "18px 16px" }}>
+                <div style={{ fontSize: 26, fontWeight: 700, color: "var(--blue-deep)", fontFamily: "var(--font-display)" }}><Counter target={13} /></div>
+                <div style={{ fontSize: 12.5, color: "#5B6B78", marginTop: 4 }}>Export markets served</div>
+              </div>
+              <div style={{ background: "var(--blue-deep)", borderRadius: 16, padding: "18px 16px" }}>
+                <Award size={20} color="var(--green)" style={{ marginBottom: 6 }} />
+                <div style={{ fontSize: 12.5, color: "#fff", fontWeight: 600 }}>PEZA-Registered, Export-Oriented Enterprise</div>
+              </div>
+            </div>
+
+            <a
+              onClick={() => scrollTo("process")}
+              style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 10, marginTop: "auto" }}
+            >
+              <span style={{ width: 40, height: 40, borderRadius: "50%", border: "1.5px solid var(--blue-deep)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <ArrowUpRight size={16} color="var(--blue-deep)" />
+              </span>
+              <span style={{ fontSize: 13.5, fontWeight: 600, color: "var(--blue-deep)" }}>See how a batch moves from wafer to warehouse</span>
+            </a>
           </div>
         </Reveal>
         <Reveal delay={120}>
-<div style={{ borderRadius: 20, overflow: "hidden", position: "relative" }}>
-            <img src={`${import.meta.env.BASE_URL}images/about-aurion.png`} alt="Aurion Solar Philippines manufacturing facility, FPIP Industrial Park, Santo Tomas, Batangas" style={{ width: "100%", height: 420, objectFit: "cover", display: "block" }} loading="lazy" />
-            <div style={{ position: "absolute", bottom: 18, left: 18, background: "#fff", borderRadius: 14, padding: "14px 18px", display: "flex", alignItems: "center", gap: 12, boxShadow: "0 10px 30px rgba(15,76,129,0.18)" }}>
-              <Award size={26} color="var(--green)" />
-              <div>
-                <div style={{ fontWeight: 700, fontSize: 14, color: "var(--blue-deep)" }}>PEZA-Registered Enterprise</div>
-                <div style={{ fontSize: 12, color: "#5B6B78" }}>Export-Oriented Manufacturer</div>
+          <div>
+            <div style={{ borderRadius: 20, overflow: "hidden", position: "relative", marginBottom: 24 }}>
+              <img src={`${import.meta.env.BASE_URL}images/about-aurion.png`} alt="Aurion Solar Philippines manufacturing facility, FPIP Industrial Park, Santo Tomas, Batangas" style={{ width: "100%", height: 480, objectFit: "cover", display: "block" }} loading="lazy" />
+              <div style={{ position: "absolute", bottom: 18, left: 18, background: "#fff", borderRadius: 14, padding: "14px 18px", display: "flex", alignItems: "center", gap: 12, boxShadow: "0 10px 30px rgba(15,76,129,0.18)" }}>
+                <Award size={26} color="var(--green)" />
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: 14, color: "var(--blue-deep)" }}>PEZA-Registered Enterprise</div>
+                  <div style={{ fontSize: 12, color: "#5B6B78" }}>Export-Oriented Manufacturer</div>
+                </div>
+              </div>
+            </div>
+            <div className="hg-about-closing" style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 24, alignItems: "center" }}>
+              <p style={{ color: "#5B6B78", margin: 0 }}>
+                Our mandate is twofold: deliver stable, export-grade solar cells to Europe and the United States, and contribute to the Philippines' own industrial and export development in the process.
+              </p>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, whiteSpace: "nowrap" }}>
+                <PhoneCall size={16} color="var(--blue-sky)" />
+                <span style={{ fontSize: 13.5, fontWeight: 600, color: "var(--blue-deep)" }}>+63 123 456 7891</span>
               </div>
             </div>
           </div>
@@ -546,18 +680,26 @@ export default function AurionSolarLanding() {
               </button>
             ))}
           </div> */}
-<div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18 }}>
-            {markets.map((m, i) => (
-              <Reveal key={m.country} delay={i * 40}>
-                <div className="hg-card" style={{ display: "flex", alignItems: "center", gap: 14, padding: "20px 22px" }}>
-                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--green)", flexShrink: 0 }} />
-                  <div>
-                    <div style={{ fontWeight: 600, fontSize: 14.5 }}>{m.country}</div>
-                    <div style={{ fontSize: 12, color: "#5B6B78" }}>{m.region} export market</div>
+          <div style={{ background: "var(--gray-light)", borderRadius: 24, padding: "36px", display: "grid", gridTemplateColumns: "0.7fr 1.3fr", gap: 30, alignItems: "center" }} className="hg-product-row">
+            <Reveal>
+              <div>
+                <div style={{ fontSize: 44, fontWeight: 700, color: "var(--blue-deep)", fontFamily: "var(--font-display)" }}><Counter target={13} suffix=" markets" /></div>
+                <p style={{ color: "#5B6B78", fontSize: 14, marginTop: 8 }}>Across three continents, with the Batangas line shipping into the same distribution network.</p>
+              </div>
+            </Reveal>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 14 }}>
+              {markets.map((m, i) => (
+                <Reveal key={m.country} delay={i * 40}>
+                  <div className="hg-card" style={{ display: "flex", alignItems: "center", gap: 14, padding: "18px 20px" }}>
+                    <span style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--green)", flexShrink: 0 }} />
+                    <div>
+                      <div style={{ fontWeight: 600, fontSize: 14.5 }}>{m.country}</div>
+                      <div style={{ fontSize: 12, color: "#5B6B78" }}>{m.region} export market</div>
+                    </div>
                   </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -691,7 +833,7 @@ export default function AurionSolarLanding() {
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
               <div style={{ background: "#fff", borderRadius: 10, padding: "6px 10px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <img
-                  src={`${import.meta.env.BASE_URL}images/aurion-logo.png`}
+                  src={`${import.meta.env.BASE_URL}images/aurion-logov2.png`}
                   alt="Aurion Solar"
                   style={{ height: 26, width: "auto", display: "block", objectFit: "contain" }}
                 />
