@@ -298,7 +298,7 @@ export default function AurionSolarLanding() {
           </nav>
 
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <button className="hg-btn-outline hg-desktop-nav" onClick={() => scrollTo("contact")}>Request a Quote</button>
+            {/* <button className="hg-btn-outline hg-desktop-nav" onClick={() => scrollTo("contact")}>Request a Quote</button> */}
             <button
               onClick={() => setMobileNav((v) => !v)}
               style={{ display: "none", background: "none", border: "none" }}
@@ -529,7 +529,7 @@ export default function AurionSolarLanding() {
               <p style={{ color: "#5B6B78" }}>Aurion Solar's group footprint spans 13 markets. Our Batangas line ships into this same network.</p>
             </div>
           </Reveal>
-          <div style={{ display: "flex", justifyContent: "center", gap: 10, marginBottom: 40, flexWrap: "wrap" }}>
+          {/* <div style={{ display: "flex", justifyContent: "center", gap: 10, marginBottom: 40, flexWrap: "wrap" }}>
             {["All", "Europe", "Americas", "Asia-Pacific" ].map((f) => (
               <button
                 key={f}
@@ -545,9 +545,9 @@ export default function AurionSolarLanding() {
                 {f}
               </button>
             ))}
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 18 }}>
-            {markets.filter((m) => marketFilter === "All" || m.region === marketFilter).map((m, i) => (
+          </div> */}
+<div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18 }}>
+            {markets.map((m, i) => (
               <Reveal key={m.country} delay={i * 40}>
                 <div className="hg-card" style={{ display: "flex", alignItems: "center", gap: 14, padding: "20px 22px" }}>
                   <span style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--green)", flexShrink: 0 }} />
