@@ -281,7 +281,7 @@ export default function AurionSolarLanding() {
 <header style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(15,76,129,0.08)" }}>        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <img
-              src={`${import.meta.env.BASE_URL}images/aurion-logo.png`}
+              src={`${import.meta.env.BASE_URL}images/aurion-logov2.png`}
               alt="Aurion Solar"
               style={{ height: 40, width: "auto", display: "block", objectFit: "contain" }}
             />
