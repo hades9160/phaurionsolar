@@ -366,7 +366,7 @@ export default function AurionSolarLanding() {
         <div className="hg-float" style={{ position: "absolute", bottom: 140, left: "4%", opacity: 0.18, animationDelay: "1.2s" }}><Zap size={54} color="#fff" /></div>
         <div className="hg-float" style={{ position: "absolute", top: 220, left: "20%", opacity: 0.15, animationDelay: "2s" }}><Factory size={40} color="#fff" /></div> */}
 
-        <div className="hg-hero-grid" style={{ maxWidth: 1180, margin: "0 auto", padding: "20px 24px 130px", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 36, alignItems: "center", position: "relative", zIndex: 2 }}>
+        <div className="hg-hero-grid" style={{ maxWidth: 1180, margin: "0 auto", padding: "65px 24px 90px", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 36, alignItems: "center", position: "relative", zIndex: 2 }}>
           <div>
             <div className="hg-glass" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 16px", marginBottom: 24, color: "#fff", fontSize: 13, fontWeight: 500 }}>
               <ShieldCheck size={15} /> PEZA-registered, export-oriented enterprise
@@ -573,10 +573,10 @@ export default function AurionSolarLanding() {
               <p style={{ color: "#5B6B78", fontSize: 15.5, margin: 0 }}>
                 Our mandate is twofold: deliver stable, export-grade solar cells to Europe and the United States, and contribute to the Philippines' own industrial and export development in the process.
               </p>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, whiteSpace: "nowrap" }}>
+              {/* <div style={{ display: "flex", alignItems: "center", gap: 10, whiteSpace: "nowrap" }}>
                 <PhoneCall size={16} color="var(--blue-sky)" />
                 <span style={{ fontSize: 14, fontWeight: 600, color: "var(--blue-deep)" }}>+63 123 456 7891</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </Reveal>
