@@ -384,34 +384,7 @@ export default function AurionSolarLanding() {
 
           </div>
 
-          <Reveal delay={160} className="hg-hero-arc">
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridAutoRows: "minmax(126px, auto)", gap: 14 }}>
-              <div className="hg-glass" style={{ background: "rgba(60,179,113,0.22)", border: "1px solid rgba(60,179,113,0.4)", padding: "20px 20px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 0.4, color: "#fff", textTransform: "uppercase", opacity: 0.85 }}>Cell-to-Module Loss</span>
-                <span style={{ fontSize: 26, fontWeight: 700, color: "#fff", fontFamily: "var(--font-display)" }}><Counter target={3} prefix="<" suffix="%" /></span>
-              </div>
-              <div className="hg-glass" style={{ padding: "20px 20px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 0.4, color: "#fff", textTransform: "uppercase", opacity: 0.85 }}>Export Markets Served</span>
-                <span style={{ fontSize: 26, fontWeight: 700, color: "#fff", fontFamily: "var(--font-display)" }}><Counter target={13} /></span>
-              </div>
-              <div className="hg-glass" style={{ background: "rgba(15,76,129,0.55)", border: "1px solid rgba(74,144,226,0.4)", padding: "22px 20px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 0.4, color: "#fff", textTransform: "uppercase", opacity: 0.85 }}>On-Time Shipment Rate</span>
-                <span style={{ fontSize: 32, fontWeight: 700, color: "#fff", fontFamily: "var(--font-display)" }}><Counter target={99.5} suffix="%" /></span>
-              </div>
-              <div style={{ borderRadius: 18, overflow: "hidden", position: "relative", minHeight: 126 }}>
-                <img
-                  src={`${import.meta.env.BASE_URL}images/about-aurion.png`}
-                  alt="Aurion Solar cell fabrication line"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }}
-                  loading="lazy"
-                />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(15,76,129,0) 40%, rgba(15,76,129,0.65) 100%)" }} />
-                <div style={{ position: "absolute", bottom: 12, left: 14, right: 14, color: "#fff", fontSize: 12, fontWeight: 600, letterSpacing: 0.3 }}>
-                  Santo Tomas, Batangas facility
-                </div>
-              </div>
-            </div>
-          </Reveal>
+
         </div>
       </section>
 
