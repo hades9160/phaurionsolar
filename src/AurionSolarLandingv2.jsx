@@ -33,33 +33,29 @@ const Twitter = ({ size = 14, color = "currentColor" }) => (
   </svg>
 );
 
-/* ---------------------------------------------------------
-   Aurion Solar PH — Landing Page
-   DESIGN SOURCE: Helios Grid (design tokens, layout, motion,
-   component structure preserved as-is). Only content/data
-   below has been swapped for Philippine Aurion Solar
-   Technologies Inc. — a B2B PV cell manufacturer.
-   Design tokens (unchanged from Helios Grid): deep blue #0F4C81,
-   sky blue #4A90E2, white, light gray #F5F7FA, dark gray #2F3A45,
-   green accent #3CB371.
-   Signature element: the "Day Arc" — unchanged animated curve,
-   relabeled to represent production output rather than solar
-   irradiance, since the visual asset itself is a design element.
---------------------------------------------------------- */
+
 
 const FONTS_CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --blue-deep: #0F4C81;
-  --blue-sky: #4A90E2;
-  --white: #FFFFFF;
-  --gray-light: #F5F7FA;
-  --gray-dark: #2F3A45;
-  --green: #3CB371;
-  --green-dark: #2E8B57;
-  --font-display: 'Poppins', sans-serif;
-  --font-body: 'Inter', sans-serif;
+--blue-deep: #1b4ef56e;
+    --blue-mid: #3874ffe8;
+    --blue-sky: #5996FF;
+    --lavender: #f4ceff;
+    --white: #FFFFFF;
+    --gray-light: #F6F4FF;
+    --gray-dark: #16213E;
+    --accent: #1b4ef5;
+    --accent-dark: #143bc2;
+    --font-display: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+.hg-chip-lavender {
+  display: inline-flex; align-items: center; gap: 6px; background: var(--lavender);
+  color: var(--blue-deep); font-weight: 700; font-size: 11px; letter-spacing: 0.5px;
+  text-transform: uppercase; padding: 6px 12px; border-radius: 999px;
 }
 
 
@@ -78,9 +74,9 @@ const FONTS_CSS = `
    32  stat-lg (primary/emphasized stat numbers)
    clamp(32,4.4vw,52) h1 (hero headline only)
 --------------------------------------------------------- */
-.hg-root { font-family: var(--font-body); font-size: 14px; color: var(--gray-dark); background: var(--gray-light); overflow-x: hidden; width: 100%; max-width: 100vw; overflow-wrap: break-word; }
+.hg-root { font-family: var(--font-body); font-size: 14px; color: var(--gray-dark); background: var(--gray-light); width: 100%; overflow-wrap: break-word; }
+html, body { overflow-x: clip; max-width: 100%; }
 .hg-root img, .hg-root svg { max-width: 100%; height: auto; }
-html, body { overflow-x: hidden; max-width: 100%; }
 .hg-root h1, .hg-root h2, .hg-root h3, .hg-root h4 { font-family: var(--font-display); color: var(--blue-deep); margin: 0; }
 .hg-root p { line-height: 1.7; }
 .hg-root * { box-sizing: border-box; }
@@ -91,12 +87,12 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .hg-reveal.hg-in { opacity: 1; transform: translateY(0); }
 
 .hg-btn-primary {
-  background: var(--green); color: #fff; border: none; padding: 14px 28px;
+  background: var(--accent); color: #fff; border: none; padding: 14px 28px;
   border-radius: 999px; font-weight: 600; font-size: 15px; display: inline-flex;
   align-items: center; gap: 8px; transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-  box-shadow: 0 8px 24px rgba(60,179,113,0.28);
+  box-shadow: 0 8px 24px rgba(27,78,245,0.28);
 }
-.hg-btn-primary:hover { transform: translateY(-2px); background: var(--green-dark); box-shadow: 0 12px 30px rgba(60,179,113,0.38); }
+.hg-btn-primary:hover { transform: translateY(-2px); background: var(--accent-dark); box-shadow: 0 12px 30px rgba(27,78,245,0.38); }
 
 .hg-btn-secondary {
   background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.6); padding: 13px 26px;
@@ -114,10 +110,10 @@ html, body { overflow-x: hidden; max-width: 100%; }
 
 .hg-card {
   background: var(--white); border-radius: 16px; padding: 18px 18px;
-  box-shadow: 0 2px 8px rgba(15,76,129,0.06); transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(15,76,129,0.06);
+  box-shadow: 0 2px 8px rgba(27,78,245,0.06); transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(27,78,245,0.06);
 }
-.hg-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(15,76,129,0.12); }
+.hg-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(27,78,245,0.12); }
 
 .hg-glass {
   background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
@@ -125,7 +121,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
 }
 
 .hg-navlink { position: relative; font-weight: 500; font-size: 14px; padding: 6px 2px; }
-.hg-navlink::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--green); transition: width 0.25s ease; }
+.hg-navlink::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--accent); transition: width 0.25s ease; }
 .hg-navlink:hover::after { width: 100%; }
 
 .hg-float { animation: hgFloat 5s ease-in-out infinite; }
@@ -143,7 +139,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .hg-accordion-panel { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
 
 .hg-input {
-  width: 100%; padding: 13px 16px; border-radius: 12px; border: 1.5px solid rgba(15,76,129,0.15);
+  width: 100%; padding: 13px 16px; border-radius: 12px; border: 1.5px solid rgba(27,78,245,0.15);
   background: var(--gray-light); font-family: var(--font-body); font-size: 14px; color: var(--gray-dark);
   transition: border-color 0.2s ease;
 }
@@ -234,24 +230,24 @@ function DayArc() {
     <svg viewBox="0 0 480 260" width="100%" height="auto" role="img" aria-label="Illustrative production output curve rising and falling across a shift">
       <defs>
         <linearGradient id="arcFill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#3CB371" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#3CB371" stopOpacity="0" />
+          <stop offset="0%" stopColor="#1B4EF5" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#1B4EF5" stopOpacity="0" />
         </linearGradient>
       </defs>
       <path d="M20 220 Q 140 20 240 20 Q 340 20 460 220 L 460 240 L 20 240 Z" fill="url(#arcFill)" />
-      <path d="M20 220 Q 140 20 240 20 Q 340 20 460 220" fill="none" stroke="#3CB371" strokeWidth="3" strokeLinecap="round"
+      <path d="M20 220 Q 140 20 240 20 Q 340 20 460 220" fill="none" stroke="#1B4EF5" strokeWidth="3" strokeLinecap="round"
         strokeDasharray="620" strokeDashoffset="620">
         <animate attributeName="stroke-dashoffset" from="620" to="0" dur="2.2s" fill="freeze" begin="0.2s" />
       </path>
-      <circle r="7" fill="#FFFFFF" stroke="#3CB371" strokeWidth="3">
+      <circle r="7" fill="#FFFFFF" stroke="#1B4EF5" strokeWidth="3">
         <animateMotion dur="6s" repeatCount="indefinite" path="M20 220 Q 140 20 240 20 Q 340 20 460 220" />
       </circle>
       {[0,1,2,3,4].map((i) => (
-        <line key={i} x1={20 + i*110} y1="240" x2={20 + i*110} y2="230" stroke="#4A90E2" strokeWidth="2" opacity="0.5" />
+        <line key={i} x1={20 + i*110} y1="240" x2={20 + i*110} y2="230" stroke="#5996FF" strokeWidth="2" opacity="0.5" />
       ))}
-      <text x="20" y="256" fill="#4A90E2" fontSize="11" fontFamily="Inter, sans-serif">Shift start</text>
-      <text x="205" y="256" fill="#4A90E2" fontSize="11" fontFamily="Inter, sans-serif">Mid-shift</text>
-      <text x="415" y="256" fill="#4A90E2" fontSize="11" fontFamily="Inter, sans-serif">Shift end</text>
+      <text x="20" y="256" fill="#5996FF" fontSize="11" fontFamily="Inter, sans-serif">Shift start</text>
+      <text x="205" y="256" fill="#5996FF" fontSize="11" fontFamily="Inter, sans-serif">Mid-shift</text>
+      <text x="415" y="256" fill="#5996FF" fontSize="11" fontFamily="Inter, sans-serif">Shift end</text>
     </svg>
   );
 }
@@ -305,17 +301,17 @@ export default function AurionSolarLanding() {
         <style>{FONTS_CSS}</style>
 
       {/* Scroll progress bar */}
-      <div style={{ position: "fixed", top: 0, left: 0, height: 3, width: `${scrollPct}%`, background: "var(--green)", zIndex: 60, transition: "width 0.1s linear" }} />
+      <div style={{ position: "fixed", top: 0, left: 0, height: 3, width: `${scrollPct}%`, background: "var(--accent)", zIndex: 60, transition: "width 0.1s linear" }} />
 
       {/* ---------------- NAVBAR ---------------- */}
-<header style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(15,76,129,0.08)" }}>        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+<header style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(27,78,245,0.08)" }}>        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <img
               src={`${import.meta.env.BASE_URL}images/aurion-logov2.png`}
               alt="Aurion Solar"
               style={{ height: 40, width: "auto", display: "block", objectFit: "contain" }}
             />
-            <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15, paddingLeft: 12, borderLeft: "1px solid rgba(15,76,129,0.15)" }}>
+            <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15, paddingLeft: 12, borderLeft: "1px solid rgba(27,78,245,0.15)" }}>
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 0.4, color: "#5B6B78", textTransform: "uppercase" }}>Philippine</span>
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 0.4, color: "#5B6B78", textTransform: "uppercase" }}>Manufacturing Division</span>
             </div>
@@ -341,7 +337,7 @@ export default function AurionSolarLanding() {
         </div>
 
         {mobileNav && (
-          <div style={{ padding: "10px 24px 20px", display: "flex", flexDirection: "column", gap: 14, borderTop: "1px solid rgba(15,76,129,0.08)" }}>
+          <div style={{ padding: "10px 24px 20px", display: "flex", flexDirection: "column", gap: 14, borderTop: "1px solid rgba(27,78,245,0.08)" }}>
             {navItems.map((n) => (
               <a key={n.id} onClick={() => scrollTo(n.id)} style={{ fontWeight: 500, cursor: "pointer" }}>{n.label}</a>
             ))}
@@ -354,7 +350,7 @@ export default function AurionSolarLanding() {
 <section
   style={{
     position: "relative",
-    backgroundImage: `linear-gradient(135deg, rgba(11, 58, 99, 0.43) 0%, rgba(15,76,129,0.8) 45%, rgba(74, 145, 226, 0.13) 100%), url(${import.meta.env.BASE_URL}images/bg.jpg)`,
+    backgroundImage: `linear-gradient(135deg, rgba(10, 24, 110, 0.43) 0%, rgba(89, 150, 255, 0.13) 100%), url(${import.meta.env.BASE_URL}images/bg.jpg)`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     overflow: "hidden",
@@ -369,7 +365,7 @@ export default function AurionSolarLanding() {
         <div className="hg-hero-grid" style={{ maxWidth: 1180, margin: "0 auto", padding: "65px 24px 90px", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 36, alignItems: "center", position: "relative", zIndex: 2 }}>
           <div>
             <div className="hg-glass" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 16px", marginBottom: 24, color: "#fff", fontSize: 13, fontWeight: 500 }}>
-              <ShieldCheck size={15} /> PEZA-registered, export-oriented enterprise
+              <ShieldCheck size={15} color="var(--lavender)" /> PEZA-registered, export-oriented enterprise
             </div>
             <h1 style={{ color: "#fff", fontSize: "clamp(32px, 4.4vw, 52px)", lineHeight: 1.12, fontWeight: 700, marginBottom: 22 }}>
               Manufacturing the Cells Inside Tomorrow's Solar Panels
@@ -409,10 +405,10 @@ export default function AurionSolarLanding() {
                 <div style={{
                   height: "100%", minHeight: 128, display: "flex", flexDirection: "column", justifyContent: "flex-end",
                   borderRadius: 16, padding: "18px 20px", position: "relative", overflow: "hidden",
-                  background: "linear-gradient(135deg, var(--blue-deep), #124a7d)",
-                  boxShadow: "0 10px 24px rgba(15,76,129,0.2)",
+                  background: "linear-gradient(135deg, var(--blue-deep), #143BC2)",
+                  boxShadow: "0 10px 24px rgba(27,78,245,0.2)",
                 }}>
-                  <span style={{ position: "absolute", top: 14, right: 18, fontSize: 11, fontWeight: 600, letterSpacing: 0.5, color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>Flagship platform</span>
+                  <span className="hg-chip-lavender" style={{ position: "absolute", top: 14, right: 18, padding: "4px 10px", fontSize: 10 }}>Flagship platform</span>
                   <div style={{ width: 40, height: 40, borderRadius: 12, background: "rgba(255,255,255,0.14)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
                     <Icon size={19} color="#fff" />
                   </div>
@@ -421,7 +417,7 @@ export default function AurionSolarLanding() {
                 </div>
               ) : (
                 <div className="hg-card" style={{ height: "100%", minHeight: 128, display: "flex", flexDirection: "column", padding: "18px 18px" }}>
-                  <div style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(74,144,226,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10, flexShrink: 0 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(89,150,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10, flexShrink: 0 }}>
                     <Icon size={17} color="var(--blue-sky)" />
                   </div>
                   <h3 style={{ fontSize: 15, marginBottom: 5 }}>{title}</h3>
@@ -445,9 +441,9 @@ export default function AurionSolarLanding() {
           {/* Featured platforms — staggered, alternating rows */}
           <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>
             {[
-              [Factory, "N-Type-183-16BB-Bifacial", "Our 16BB bifacial platform built for high-efficiency module lines, with <3% cell-to-module loss.", "linear-gradient(135deg, var(--blue-deep), #124a7d)", "rgba(15,76,129,0.55)"],
-              [Layers, "N-Type-210R-16BB-Bifacial", "A large-format 210R bifacial platform for higher-output module designs.", "linear-gradient(135deg, var(--green-dark), var(--green))", "rgba(46,139,87,0.5)"],
-              [Wrench, "Custom OEM Configuration", "Busbar count, wafer size, and packaging adjusted for qualified OEM orders.", "linear-gradient(135deg, #2F3A45, #435262)", "rgba(47,58,69,0.55)"],
+              [Factory, "N-Type-183-16BB-Bifacial", "Our 16BB bifacial platform built for high-efficiency module lines, with <3% cell-to-module loss.", "linear-gradient(135deg, var(--blue-deep), #143BC2)", "rgba(27,78,245,0.55)"],
+              [Layers, "N-Type-210R-16BB-Bifacial", "A large-format 210R bifacial platform for higher-output module designs.", "linear-gradient(135deg, var(--blue-mid), var(--blue-sky))", "rgba(56,116,255,0.45)"],
+              [Wrench, "Custom OEM Configuration", "Busbar count, wafer size, and packaging adjusted for qualified OEM orders.", "linear-gradient(135deg, #16213E, #2A3B66)", "rgba(22,33,62,0.55)"],
             ].map(([Icon, title, desc, panelBg, tint], i) => (
               <Reveal key={title} delay={i * 60}>
                 <div
@@ -456,7 +452,7 @@ export default function AurionSolarLanding() {
                     display: "grid",
                     gridTemplateColumns: i % 2 === 0 ? "1.1fr 0.9fr" : "0.9fr 1.1fr",
                     borderRadius: 16, overflow: "hidden", minHeight: 128,
-                    boxShadow: "0 8px 20px rgba(15,76,129,0.10)",
+                    boxShadow: "0 8px 20px rgba(27,78,245,0.10)",
                   }}
                 >
                   <div style={{
@@ -510,12 +506,12 @@ export default function AurionSolarLanding() {
             ].map(([Icon, title, desc], i) => (
               <Reveal key={title} delay={i * 60}>
                 <div className="hg-card" style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 128 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(74,144,226,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(89,150,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
                     <Icon size={17} color="var(--blue-sky)" />
                   </div>
                   <h3 style={{ fontSize: 15, marginBottom: 5 }}>{title}</h3>
                   <p style={{ fontSize: 13, color: "#5B6B78", flexGrow: 1 }}>{desc}</p>
-                  <a className="hg-navlink" style={{ marginTop: 10, color: "var(--green)", fontSize: 13, display: "inline-flex", alignItems: "center", gap: 4, cursor: "pointer" }} onClick={() => scrollTo("contact")}>
+                  <a className="hg-navlink" style={{ marginTop: 10, color: "var(--accent)", fontSize: 13, display: "inline-flex", alignItems: "center", gap: 4, cursor: "pointer" }} onClick={() => scrollTo("contact")}>
                     Request datasheet <ArrowUpRight size={12} />
                   </a>
                 </div>
@@ -529,19 +525,19 @@ export default function AurionSolarLanding() {
       <section id="about" style={{ padding: "40px 24px", maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: 40, alignItems: "start" }}>
         <Reveal>
           <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-            <span style={{ color: "var(--green)", fontWeight: 600, fontSize: 11, letterSpacing: 0.5, textTransform: "uppercase" }}>ABOUT AURION SOLAR PH</span>
+            <span className="hg-chip-lavender" style={{ width: "fit-content" }}>About Aurion Solar PH</span>
             <h2 style={{ fontSize: 24, margin: "8px 0 12px" }}>An export engine for the Aurion Solar group</h2>
             <p style={{ color: "#5B6B78", fontSize: 15.5, marginBottom: 24 }}>
               Philippine Aurion Solar Technologies Inc. was established through direct investment from GBFNEW POWER GROUP INC. as a PEZA-registered, export-oriented manufacturer of photovoltaic cells. Operating from the FPIP Industrial Park in Santo Tomas, Batangas, the facility converts the Philippines' trade, logistics, and policy advantages into a reliable supply line for module manufacturers overseas.
             </p>
 
             <div className="hg-about-stats" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 30 }}>
-              <div style={{ background: "var(--white)", border: "1px solid rgba(15,76,129,0.08)", borderRadius: 16, padding: "18px 16px" }}>
+              <div style={{ background: "var(--white)", border: "1px solid rgba(27,78,245,0.08)", borderRadius: 16, padding: "18px 16px" }}>
                 <div style={{ fontSize: 26, fontWeight: 700, color: "var(--blue-deep)", fontFamily: "var(--font-display)" }}><Counter target={13} /></div>
                 <div style={{ fontSize: 12, color: "#5B6B78", marginTop: 4 }}>Export markets served</div>
               </div>
               <div style={{ background: "var(--blue-deep)", borderRadius: 16, padding: "18px 16px" }}>
-                <Award size={20} color="var(--green)" style={{ marginBottom: 6 }} />
+                <Award size={20} color="var(--accent)" style={{ marginBottom: 6 }} />
                 <div style={{ fontSize: 12, color: "#fff", fontWeight: 600 }}>PEZA-Registered, Export-Oriented Enterprise</div>
               </div>
             </div>
@@ -561,8 +557,8 @@ export default function AurionSolarLanding() {
           <div>
             <div style={{ borderRadius: 20, overflow: "hidden", position: "relative", marginBottom: 24 }}>
               <img src={`${import.meta.env.BASE_URL}images/about-aurion.png`} alt="Aurion Solar Philippines manufacturing facility, FPIP Industrial Park, Santo Tomas, Batangas" style={{ width: "100%", height: 340, objectFit: "cover", display: "block" }} loading="lazy" />
-              <div style={{ position: "absolute", bottom: 18, left: 18, background: "#fff", borderRadius: 14, padding: "14px 18px", display: "flex", alignItems: "center", gap: 12, boxShadow: "0 10px 30px rgba(15,76,129,0.18)" }}>
-                <Award size={26} color="var(--green)" />
+              <div style={{ position: "absolute", bottom: 18, left: 18, background: "#fff", borderRadius: 14, padding: "14px 18px", display: "flex", alignItems: "center", gap: 12, boxShadow: "0 10px 30px rgba(27,78,245,0.18)" }}>
+                <Award size={26} color="var(--accent)" />
                 <div>
                   <div style={{ fontWeight: 700, fontSize: 15, color: "var(--blue-deep)" }}>PEZA-Registered Enterprise</div>
                   <div style={{ fontSize: 12, color: "#5B6B78" }}>Export-Oriented Manufacturer</div>
@@ -583,7 +579,7 @@ export default function AurionSolarLanding() {
       </section>
 
       {/* ---------------- BENEFITS / PHILIPPINES ADVANTAGE ---------------- */}
-      <section style={{ padding: "40px 24px", background: "linear-gradient(135deg, var(--blue-deep), #124a7d)" }}>
+      <section style={{ padding: "40px 24px", background: "linear-gradient(135deg, var(--blue-deep), #143BC2)" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>
           <Reveal>
             <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto 18px" }}>
@@ -599,7 +595,7 @@ export default function AurionSolarLanding() {
               [Award, "PEZA tax & tariff incentives", "100% corporate income tax exemption for 4–6 years, zero-tariff raw material imports and exports, and unrestricted profit remittance."],
             ].map(([Icon, title, desc]) => (
               <div key={title} className="hg-glass" style={{ padding: 18, minHeight: 128, display: "flex", flexDirection: "column" }}>
-                <Icon size={19} color="#3CB371" style={{ marginBottom: 8 }} />
+                <Icon size={19} color="#1B4EF5" style={{ marginBottom: 8 }} />
                 <h3 style={{ color: "#fff", fontSize: 15, marginBottom: 5 }}>{title}</h3>
                 <p style={{ color: "rgba(255,255,255,0.72)", fontSize: 13, flexGrow: 1 }}>{desc}</p>
               </div>
@@ -617,7 +613,7 @@ export default function AurionSolarLanding() {
           </div>
         </Reveal>
         <div style={{ position: "relative" }}>
-          <div style={{ position: "absolute", left: 27, top: 0, bottom: 0, width: 2, background: "rgba(74,144,226,0.2)" }} className="hg-timeline-line" />
+          <div style={{ position: "absolute", left: 27, top: 0, bottom: 0, width: 2, background: "rgba(89,150,255,0.2)" }} className="hg-timeline-line" />
           {[
             [Layers, "Raw Material Sourcing", "Polysilicon, silver paste, and glass sourced from regional partners in China, South Korea, and Japan."],
             [Factory, "N-Type Cell Fabrication", "Bifacial cell production with 16BB busbar architecture across the 183 and 210R platforms."],
@@ -633,7 +629,7 @@ export default function AurionSolarLanding() {
                   <Icon size={22} color="var(--blue-deep)" />
                 </div>
                 <div style={{ paddingTop: 8 }}>
-                  <div style={{ fontSize: 11, color: "var(--green)", fontWeight: 600, marginBottom: 4, letterSpacing: 0.5 }}>STEP {i + 1}</div>
+                  <div className="hg-chip-lavender" style={{ marginBottom: 6, padding: "3px 10px", fontSize: 10 }}>Step {i + 1}</div>
                   <h3 style={{ fontSize: 16, marginBottom: 6 }}>{title}</h3>
                   <p style={{ fontSize: 14, color: "#5B6B78" }}>{desc}</p>
                 </div>
@@ -680,7 +676,7 @@ export default function AurionSolarLanding() {
               {markets.map((m, i) => (
                 <Reveal key={m.country} delay={i * 40}>
                   <div className="hg-card" style={{ display: "flex", alignItems: "center", gap: 14, padding: "18px 20px" }}>
-                    <span style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--green)", flexShrink: 0 }} />
+                    <span style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--accent)", flexShrink: 0 }} />
                     <div>
                       <div style={{ fontWeight: 600, fontSize: 15 }}>{m.country}</div>
                       <div style={{ fontSize: 12, color: "#5B6B78" }}>{m.region} export market</div>
@@ -703,7 +699,7 @@ export default function AurionSolarLanding() {
             <Quote size={30} color="var(--blue-sky)" style={{ marginBottom: 16 }} />
             <p style={{ fontSize: 17, marginBottom: 22, color: "var(--gray-dark)" }}>{testimonials[testiIdx].text}</p>
             <div style={{ display: "flex", justifyContent: "center", gap: 3, marginBottom: 14 }}>
-              {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={15} fill="#3CB371" color="#3CB371" />)}
+              {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={15} fill="#1B4EF5" color="#1B4EF5" />)}
             </div>
             <div style={{ fontWeight: 600 }}>{testimonials[testiIdx].name}</div>
             <div style={{ fontSize: 13, color: "#5B6B78" }}>{testimonials[testiIdx].role}</div>
@@ -712,7 +708,7 @@ export default function AurionSolarLanding() {
         <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 22 }}>
           {testimonials.map((_, i) => (
             <button key={i} onClick={() => setTestiIdx(i)} aria-label={`Testimonial ${i + 1}`}
-              style={{ width: 8, height: 8, borderRadius: "50%", border: "none", background: i === testiIdx ? "var(--green)" : "rgba(74,144,226,0.25)" }} />
+              style={{ width: 8, height: 8, borderRadius: "50%", border: "none", background: i === testiIdx ? "var(--accent)" : "rgba(89,150,255,0.25)" }} />
           ))}
         </div>
       </section> */}
@@ -743,7 +739,7 @@ export default function AurionSolarLanding() {
             <div className="hg-card" style={{ marginBottom: 14, padding: "0 24px", cursor: "pointer" }} onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 0" }}>
                 <span style={{ fontWeight: 600, fontSize: 15 }}>{f.q}</span>
-                {openFaq === i ? <ChevronUp size={18} color="var(--green)" /> : <ChevronDown size={18} color="var(--blue-sky)" />}
+                {openFaq === i ? <ChevronUp size={18} color="var(--accent)" /> : <ChevronDown size={18} color="var(--blue-sky)" />}
               </div>
               <div className="hg-accordion-panel" style={{ maxHeight: openFaq === i ? 200 : 0 }}>
                 <p style={{ fontSize: 14, color: "#5B6B78", paddingBottom: 20 }}>{f.a}</p>
@@ -755,13 +751,15 @@ export default function AurionSolarLanding() {
       </section>
 
       {/* ---------------- CTA BANNER ---------------- */}
-      <section style={{ padding: "50px 24px", background: "linear-gradient(120deg, var(--green-dark), var(--green))", textAlign: "center" }}>
-        <Reveal>
+      <section style={{ padding: "50px 24px", position: "relative", overflow: "hidden", background: "linear-gradient(120deg, var(--accent-dark), var(--blue-deep) 60%, var(--blue-mid))", textAlign: "center" }}>
+        <div style={{ position: "absolute", top: "-30%", right: "-10%", width: 360, height: 360, borderRadius: "50%", background: "radial-gradient(circle, rgba(244,206,255,0.28) 0%, rgba(244,206,255,0) 70%)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", bottom: "-35%", left: "-8%", width: 320, height: 320, borderRadius: "50%", background: "radial-gradient(circle, rgba(244,206,255,0.18) 0%, rgba(244,206,255,0) 70%)", pointerEvents: "none" }} />
+        <Reveal style={{ position: "relative", zIndex: 2 }}>
           <h2 style={{ color: "#fff", fontSize: 24, marginBottom: 10 }}>Looking for a reliable solar cell supply partner?</h2>
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 15.5, marginBottom: 26, maxWidth: 480, marginLeft: "auto", marginRight: "auto" }}>
             Tell us your target volume, cell platform, and shipping destination — we'll get back with lead time and pricing.
           </p>
-          <button className="hg-btn-secondary" style={{ background: "#fff", color: "var(--green-dark)", borderColor: "#fff" }} onClick={() => scrollTo("contact")}>
+          <button className="hg-btn-secondary" style={{ background: "#fff", color: "var(--accent-dark)", borderColor: "#fff" }} onClick={() => scrollTo("contact")}>
             Request a Quote / Partnership Inquiry <ArrowRight size={16} />
           </button>
         </Reveal>
@@ -804,7 +802,7 @@ export default function AurionSolarLanding() {
                 [Clock, "Mon–Fri, 8:00 AM – 5:00 PM (PHT)"],
               ].map(([Icon, text]) => (
                 <div key={text} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(74,144,226,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(89,150,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     <Icon size={17} color="var(--blue-sky)" />
                   </div>
                   <span style={{ fontSize: 14 }}>{text}</span>
@@ -868,7 +866,7 @@ export default function AurionSolarLanding() {
       {/* ---------------- FLOATING QUOTE BUTTON + BACK TO TOP ---------------- */}
       {/* <button
         onClick={() => scrollTo("contact")}
-        style={{ position: "fixed", bottom: 28, right: 28, zIndex: 55, background: "var(--green)", color: "#fff", border: "none", borderRadius: 999, padding: "14px 20px", fontWeight: 600, fontSize: 13.5, display: "flex", alignItems: "center", gap: 8, boxShadow: "0 10px 26px rgba(60,179,113,0.4)" }}
+        style={{ position: "fixed", bottom: 28, right: 28, zIndex: 55, background: "var(--accent)", color: "#fff", border: "none", borderRadius: 999, padding: "14px 20px", fontWeight: 600, fontSize: 13.5, display: "flex", alignItems: "center", gap: 8, boxShadow: "0 10px 26px rgba(27,78,245,0.4)" }}
       >
         <Zap size={15} /> Request a Quote
       </button> */}
@@ -877,7 +875,7 @@ export default function AurionSolarLanding() {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Back to top"
-          style={{ position: "fixed", bottom: 28, left: 28, zIndex: 55, width: 44, height: 44, borderRadius: "50%", background: "var(--blue-deep)", color: "#fff", border: "none", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 20px rgba(15,76,129,0.35)" }}
+          style={{ position: "fixed", bottom: 28, left: 28, zIndex: 55, width: 44, height: 44, borderRadius: "50%", background: "var(--blue-deep)", color: "#fff", border: "none", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 20px rgba(27,78,245,0.35)" }}
         >
           <ArrowUp size={18} />
         </button>
