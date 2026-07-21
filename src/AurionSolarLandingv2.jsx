@@ -94,6 +94,24 @@ html, body { overflow-x: clip; max-width: 100%; }
 }
 .hg-btn-primary:hover { transform: translateY(-2px); background: var(--color-accent-dark); box-shadow: 0 12px 30px rgba(0,173,181,0.38); }
 
+
+
+.hg-btn-glass {
+  background: rgba(255,255,255,0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.28); color: #fff; padding: 14px 28px;
+  border-radius: 999px; font-weight: 600; font-size: 15px; display: inline-flex;
+  align-items: center; gap: 8px; transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.hg-btn-glass:hover { transform: translateY(-2px); background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.45); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+.hg-btn-glass:active { transform: translateY(0); background: rgba(255,255,255,0.14); }
+.hg-btn-glass:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+
+
+
+
+
 .hg-btn-secondary {
   background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.6); padding: 13px 26px;
   border-radius: 999px; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px;
@@ -341,7 +359,7 @@ export default function AurionSolarLanding() {
             {navItems.map((n) => (
               <a key={n.id} onClick={() => scrollTo(n.id)} style={{ fontWeight: 500, cursor: "pointer" }}>{n.label}</a>
             ))}
-            <button className="hg-btn-primary" style={{ justifyContent: "center" }} onClick={() => scrollTo("contact")}>Request a Quote</button>
+            <button className="hg-btn-glass" onClick={() => scrollTo("contact")}>Request a Quote <ArrowRight size={16} /></button>
           </div>
         )}
       </header>
@@ -374,7 +392,8 @@ export default function AurionSolarLanding() {
               Philippine Aurion Solar Technologies Inc. is a Batangas-based manufacturer and global supplier of high-efficiency N-Type bifacial solar cells — built for module makers who sell into Europe, the US, and beyond.
             </p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <button className="hg-btn-primary" onClick={() => scrollTo("contact")}>Request a Quote <ArrowRight size={16} /></button>
+              <button className="hg-btn-glass" onClick={() => scrollTo("contact")}>Request a Quote <ArrowRight size={16} /></button>
+              
               {/* <button className="hg-btn-secondary" onClick={() => scrollTo("services")}>View Cell Datasheets</button> */}
             </div>
 
