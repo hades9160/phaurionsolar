@@ -366,7 +366,7 @@ export default function AurionSolarLanding() {
         <div className="hg-float" style={{ position: "absolute", bottom: 140, left: "4%", opacity: 0.18, animationDelay: "1.2s" }}><Zap size={54} color="#fff" /></div>
         <div className="hg-float" style={{ position: "absolute", top: 220, left: "20%", opacity: 0.15, animationDelay: "2s" }}><Factory size={40} color="#fff" /></div> */}
 
-        <div className="hg-hero-grid" style={{ maxWidth: 1180, margin: "0 auto", padding: "20px 24px 64px", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 36, alignItems: "center", position: "relative", zIndex: 2 }}>
+        <div className="hg-hero-grid" style={{ maxWidth: 1180, margin: "0 auto", padding: "20px 24px 130px", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 36, alignItems: "center", position: "relative", zIndex: 2 }}>
           <div>
             <div className="hg-glass" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 16px", marginBottom: 24, color: "#fff", fontSize: 13, fontWeight: 500 }}>
               <ShieldCheck size={15} /> PEZA-registered, export-oriented enterprise
@@ -893,12 +893,12 @@ export default function AurionSolarLanding() {
       </footer>
 
       {/* ---------------- FLOATING QUOTE BUTTON + BACK TO TOP ---------------- */}
-      <button
+      {/* <button
         onClick={() => scrollTo("contact")}
         style={{ position: "fixed", bottom: 28, right: 28, zIndex: 55, background: "var(--green)", color: "#fff", border: "none", borderRadius: 999, padding: "14px 20px", fontWeight: 600, fontSize: 13.5, display: "flex", alignItems: "center", gap: 8, boxShadow: "0 10px 26px rgba(60,179,113,0.4)" }}
       >
         <Zap size={15} /> Request a Quote
-      </button>
+      </button> */}
 
       {showTop && (
         <button
