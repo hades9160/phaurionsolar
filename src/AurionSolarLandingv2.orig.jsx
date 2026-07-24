@@ -179,14 +179,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 @media (max-width: 760px) {
   #about { grid-template-columns: 1fr !important; }
   #contact { grid-template-columns: 1fr !important; }
-  .hg-footer-grid { grid-template-columns: 1fr 1fr !important; }
-}
-
-@media (max-width: 480px) {
-  .hg-footer { padding: 40px 20px 24px !important; }
-  .hg-footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-  .hg-footer-bottom { flex-direction: column !important; align-items: flex-start !important; text-align: left !important; gap: 16px !important; }
-  .hg-footer-legal { gap: 14px 20px !important; }
+  footer > div:first-child { grid-template-columns: 1fr 1fr !important; }
 }
 
 @media (max-width: 900px) {
@@ -467,10 +460,10 @@ export default function AurionSolarLanding() {
           {/* Featured platforms — staggered, alternating rows */}
           <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>
             {[
-              [Factory, "N-Type-183-16BB-Bifacial", "Our 16BB bifacial platform built for high-efficiency module lines, with <3% cell-to-module loss.", "linear-gradient(135deg, var(--color-primary), #14181D)", "rgba(11, 11, 11, 0.02)", "ntype183.png"],
-              [Layers, "N-Type-210R-16BB-Bifacial", "A large-format 210R bifacial platform for higher-output module designs.", "linear-gradient(135deg, var(--color-accent-dark), var(--color-accent))", "rgba(0, 7, 7, 0.02)", "ntype210.png"],
-              [Wrench, "Custom OEM Configuration", "Busbar count, wafer size, and packaging adjusted for qualified OEM orders.", "linear-gradient(135deg, #2A2F38, #393E46)", "rgba(235, 237, 239, 0.55)", null],
-            ].map(([Icon, title, desc, panelBg, tint, image], i) => (
+              [Factory, "N-Type-183-16BB-Bifacial", "Our 16BB bifacial platform built for high-efficiency module lines, with <3% cell-to-module loss.", "linear-gradient(135deg, var(--color-primary), #14181D)", "rgba(34,40,49,0.55)"],
+              [Layers, "N-Type-210R-16BB-Bifacial", "A large-format 210R bifacial platform for higher-output module designs.", "linear-gradient(135deg, var(--color-accent-dark), var(--color-accent))", "rgba(0,147,154,0.5)"],
+              [Wrench, "Custom OEM Configuration", "Busbar count, wafer size, and packaging adjusted for qualified OEM orders.", "linear-gradient(135deg, #2A2F38, #393E46)", "rgba(34,40,49,0.55)"],
+            ].map(([Icon, title, desc, panelBg, tint], i) => (
               <Reveal key={title} delay={i * 60}>
                 <div
                   className="hg-product-row"
@@ -499,53 +492,21 @@ export default function AurionSolarLanding() {
                       <ArrowUpRight size={14} />
                     </a>
                   </div>
-                  {image ? (
-                    <div className="hg-product-media" style={{ order: i % 2 === 0 ? 1 : 0, position: "relative", minHeight: 128 }}>
-                      <img
-                        src={`${import.meta.env.BASE_URL}images/${image}`}
-                        alt={title}
-                        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-                        loading="lazy"
-                      />
-                      <div style={{ position: "absolute", inset: 0, background: tint }} />
-                      <div style={{ position: "absolute", bottom: 10, left: 12, right: 12, display: "flex", alignItems: "center", gap: 8 }}>
-                        <div style={{ width: 32, height: 32, borderRadius: 9, background: "rgba(255,255,255,0.16)", backdropFilter: "blur(6px)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <Icon size={16} color="#fff" />
-                        </div>
-                        <span style={{ color: "#fff", fontSize: 12, fontWeight: 600 }}>Request datasheet for full specs</span>
+                  <div className="hg-product-media" style={{ order: i % 2 === 0 ? 1 : 0, position: "relative", minHeight: 128 }}>
+                    <img
+                      src={`${import.meta.env.BASE_URL}images/ntype183.png`}
+                      alt={title}
+                      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                      loading="lazy"
+                    />
+                    <div style={{ position: "absolute", inset: 0, background: tint }} />
+                    <div style={{ position: "absolute", bottom: 10, left: 12, right: 12, display: "flex", alignItems: "center", gap: 8 }}>
+                      <div style={{ width: 32, height: 32, borderRadius: 9, background: "rgba(255,255,255,0.16)", backdropFilter: "blur(6px)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <Icon size={16} color="#fff" />
                       </div>
+                      <span style={{ color: "#fff", fontSize: 12, fontWeight: 600 }}>Request datasheet for full specs</span>
                     </div>
-                  ) : (
-                    <div
-                      className="hg-product-media"
-                      style={{
-                        order: i % 2 === 0 ? 1 : 0, position: "relative", minHeight: 128,
-                        background: "var(--color-bg)", display: "flex", flexDirection: "column",
-                        justifyContent: "center", gap: 8, padding: "16px 20px",
-                      }}
-                    >
-                      {[
-                        [Layers, "Busbar count"],
-                        [Factory, "Wafer size"],
-                        [ClipboardList, "Packaging"],
-                      ].map(([ChipIcon, label]) => (
-                        <div
-                          key={label}
-                          style={{
-                            display: "flex", alignItems: "center", gap: 10,
-                            background: "#fff", borderRadius: 10, padding: "8px 12px",
-                            boxShadow: "0 4px 10px rgba(34,40,49,0.06)",
-                          }}
-                        >
-                          <div style={{ width: 26, height: 26, borderRadius: 8, background: "rgba(0,173,181,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                            <ChipIcon size={13} color="var(--color-accent)" />
-                          </div>
-                          <span style={{ fontSize: 12.5, color: "var(--color-primary)", fontWeight: 600 }}>{label}</span>
-                          <span style={{ marginLeft: "auto", fontSize: 11, color: "#9FADB8" }}>Configurable</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -872,8 +833,8 @@ export default function AurionSolarLanding() {
       </section>
 
       {/* ---------------- FOOTER ---------------- */}
-      <footer className="hg-footer" style={{ background: "var(--color-text)", color: "#D6DEE5", padding: "48px 24px 26px", overflowX: "hidden" }}>
-        <div className="hg-footer-grid" style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1.2fr", gap: 40 }}>
+      <footer style={{ background: "var(--color-text)", color: "#D6DEE5", padding: "48px 24px 26px" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1.2fr", gap: 40 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
               <div style={{ background: "#fff", borderRadius: 10, padding: "6px 10px", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -913,9 +874,9 @@ export default function AurionSolarLanding() {
             </div>
           </div>
         </div>
-        <div className="hg-footer-bottom" style={{ maxWidth: 1180, margin: "40px auto 0", paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12, fontSize: 12, color: "#7E8C97" }}>
+        <div style={{ maxWidth: 1180, margin: "40px auto 0", paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12, fontSize: 12, color: "#7E8C97" }}>
           <span>© 2026 Philippine Aurion Solar Technologies Inc. — a GBFNEW POWER GROUP INC. company.</span>
-          <div className="hg-footer-legal" style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 20 }}>
             <span>Privacy Policy</span><span>Terms & Conditions</span>
           </div>
         </div>
